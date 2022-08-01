@@ -7,7 +7,6 @@
 ##########################################################################################             
 
 STATUS_FIREWALLD="`systemctl is-active firewalld`"
-OUTPUT="unknown"
 if [[ $STATUS_FIREWALLD == "active" ]]
 then
     echo "* * Status of Firewalld * *"
