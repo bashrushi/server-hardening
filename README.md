@@ -2,3 +2,5 @@
 Server Hardening According to Policies
 This All Scripts are use to Harden server.
 But some of them use to monitor server.
+
+NOTE:- Policy of Your Orginazation i will different. 
