@@ -6,14 +6,20 @@
 # Usage:./firewalld.sh                                                                   #
 ##########################################################################################             
 
-STATUS_FIREWALLD="`systemctl is-active firewalld`"
-if [[ $STATUS_FIREWALLD == "active" ]]
+DEV_NULL="/dev/null"
+systemctl is-active firewalld > $DEV_NULL
+
+if [[ $? -eq 0 ]]
 then
-    echo "* * Status of Firewalld * *"
-    `systemctl status firewalld`
-    echo "* * Stopping... Service firewalld * *"
-    `systemctl stop firewalld`
-    echo "* * Firewall Service Stopped Successfully * *"
+        
+        echo "Firewall is Running on node `hostname`"
+        echo "Stopping..."
+        systemctl stop firewalld
 else
-    echo "* * Firewall Service Already Stopped * *" 
-fi    
+        echo "Firewall is Already Stopped on node `hostname`"
+fi
+
+if [[ $? -eq "0" ]]
+then
+        echo "Firewall Stopped Successfully"
+fi
